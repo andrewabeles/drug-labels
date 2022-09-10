@@ -3,6 +3,8 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+import pandas as pd 
+from src.data.cleaning import clean_drugs
 
 
 @click.command()
@@ -14,6 +16,17 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+
+    logger.info('reading raw data')
+    drugs_raw = pd.read_csv('{0}/drugs.csv'.format(input_filepath))
+
+    logger.info('cleaning raw data')
+    drugs_clean = clean_drugs(drugs_raw)
+
+    logger.info('writing clean data')
+    drugs_clean.to_csv('{0}/drugs.csv'.format(output_filepath))
+
+    logger.info('dataset successfully created')
 
 
 if __name__ == '__main__':
