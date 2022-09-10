@@ -24,7 +24,7 @@ def main(input_filepath, output_filepath):
     drugs_clean = clean_drugs(drugs_raw)
 
     logger.info('writing clean data')
-    drugs_clean.to_csv('{0}/drugs.csv'.format(output_filepath))
+    drugs_clean.to_csv('{0}/drugs.csv'.format(output_filepath), index=False)
 
     logger.info('dataset successfully created')
 
