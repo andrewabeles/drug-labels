@@ -10,6 +10,7 @@ def make_interim_data(drugs_raw):
     drugs_interim['warnings'] = drugs_interim['warnings'].apply(lambda x: ' '.join(eval(x))) # transform warnings from list of strings to single string
     drugs_interim['openfda.product_type'] = drugs_interim['openfda.product_type'].apply(lambda x: eval(x)[0]) # transform product type from list to single string
     drugs_interim.rename(columns={'openfda.product_type': 'product_type'}, inplace=True) # rename product_type column 
+    drugs_interim.dropna(inplace=True) # remove rows with missing values 
     return drugs_interim
 
 def remove_punctuation(text):
