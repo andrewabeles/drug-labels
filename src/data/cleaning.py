@@ -1,3 +1,5 @@
+from string import punctuation
+
 def make_interim_data(drugs_raw):
     """Perform some basic processing on the raw drugs data.
     
@@ -9,3 +11,19 @@ def make_interim_data(drugs_raw):
     drugs_interim['openfda.product_type'] = drugs_interim['openfda.product_type'].apply(lambda x: eval(x)[0]) # transform product type from list to single string
     drugs_interim.rename(columns={'openfda.product_type': 'product_type'}, inplace=True) # rename product_type column 
     return drugs_interim
+
+def remove_punctuation(text):
+    punct_set = set(punctuation)
+    return "".join([char for char in text if char not in punct_set])
+
+def tokenize(text):
+    return text.split()
+
+def remove_stopwords(tokens):
+    """ToDo"""
+    return tokens
+
+def prepare(text, pipeline=[str.lower, remove_punctuation, tokenize, remove_stopwords]):
+    for transform in pipeline:
+        text = transform(text)
+    return text
