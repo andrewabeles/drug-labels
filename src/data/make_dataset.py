@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import pandas as pd 
-from src.data.cleaning import clean_drugs
+from src.data.cleaning import make_interim_data
 
 
 @click.command()
@@ -20,13 +20,13 @@ def main(input_filepath, output_filepath):
     logger.info('reading raw data')
     drugs_raw = pd.read_csv('{0}/drugs.csv'.format(input_filepath))
 
-    logger.info('cleaning raw data')
-    drugs_clean = clean_drugs(drugs_raw)
+    logger.info('processing raw data')
+    drugs_interim = make_interim_data(drugs_raw)
 
-    logger.info('writing clean data')
-    drugs_clean.to_csv('{0}/drugs.csv'.format(output_filepath), index=False)
+    logger.info('writing interim data')
+    drugs_interim.to_csv('data/interim/drugs.csv', index=False)
 
-    logger.info('dataset successfully created')
+    logger.info('done')
 
 
 if __name__ == '__main__':
