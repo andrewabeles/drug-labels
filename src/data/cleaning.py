@@ -18,11 +18,6 @@ def make_interim_data(drugs_raw):
     drugs_interim['tokens'] = drugs_interim['warnings'].apply(prepare) # apply text processing to warnings 
     return drugs_interim[['warnings', 'tokens', 'product_type']]
 
-def prepare(text, pipeline=[str.lower, remove_punctuation, tokenize, remove_stopwords]):
-    for transform in pipeline:
-        text = transform(text)
-    return text
-
 def remove_punctuation(text):
     punct_set = set(punctuation)
     return "".join([char for char in text if char not in punct_set])
@@ -33,3 +28,8 @@ def tokenize(text):
 def remove_stopwords(tokens):
     """ToDo"""
     return tokens
+
+def prepare(text, pipeline=[str.lower, remove_punctuation, tokenize, remove_stopwords]):
+    for transform in pipeline:
+        text = transform(text)
+    return text
