@@ -17,8 +17,7 @@ test_environment:
 
 ## Setup Project
 setup_project: test_environment
-	$(PYTHON_INTERPRETER) setup.py build
-	$(PYTHON_INTERPRETER) setup.py install 
+	pip install . 
 
 ## Install Python Dependencies
 requirements: setup_project
