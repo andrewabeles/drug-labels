@@ -1,6 +1,7 @@
 import requests
 import re 
 import pandas as pd
+import logging
 
 def get_all_drugs(url, all_drugs=[]):
     """Get list of drugs from OpenFDA API.  
@@ -18,7 +19,20 @@ def get_all_drugs(url, all_drugs=[]):
         else: # the last page of results does not include a Link in the header 
             return all_drugs
 
-url = 'https://api.fda.gov/drug/label.json?search=_exists_:warnings+AND+_exists_:openfda.product_type&limit=1000'
-drugs = get_all_drugs(url) # get list of drugs 
-df = pd.json_normalize(drugs) # store them in a pandas dataframe 
-df.to_csv('data/raw/drugs.csv', index=False) # save the dataframe as a csv to the data/raw directory
+def main():
+    logger = logging.getLogger(__name__)
+    logger.info('downloading raw data')
+    
+    url = 'https://api.fda.gov/drug/label.json?search=_exists_:warnings+AND+_exists_:openfda.product_type&limit=1000'
+    drugs = get_all_drugs(url) # get list of drugs 
+    df = pd.json_normalize(drugs) # store them in a pandas dataframe 
+
+    logger.info('writing raw data')
+    df.to_csv('data/raw/drugs.csv', index=False) # save the dataframe as a csv to the data/raw directory
+
+    logger.info('done')
+
+if __name__ == '__main__':
+    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    main()
