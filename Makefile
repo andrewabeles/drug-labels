@@ -1,4 +1,4 @@
-.PHONY: test_environment requirements data
+.PHONY: test_environment setup_project requirements data
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -15,8 +15,13 @@ PYTHON_INTERPRETER = python3
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
 
+## Setup Project
+setup_project: test_environment
+	$(PYTHON_INTERPRETER) setup.py build
+	$(PYTHON_INTERPRETER) setup.py install 
+
 ## Install Python Dependencies
-requirements: test_environment
+requirements: setup_project
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
