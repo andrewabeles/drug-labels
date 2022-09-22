@@ -1,4 +1,4 @@
-.PHONY: test_environment requirements data clean
+.PHONY: test_environment requirements data
 
 #################################################################################
 # GLOBALS                                                                       #
