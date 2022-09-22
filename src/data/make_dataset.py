@@ -24,7 +24,7 @@ def main(input_filepath, output_filepath):
     drugs_processed = process_data(drugs_raw)
 
     logger.info('writing processed data')
-    drugs_interim.to_csv('{0}/drugs.csv'.format(output_filepath), index=False)
+    drugs_processed.to_csv('{0}/drugs.csv'.format(output_filepath), index=False)
 
     logger.info('done')
 
