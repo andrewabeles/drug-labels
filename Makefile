@@ -26,4 +26,5 @@ requirements: setup_project
 
 ## Make Dataset
 data: requirements
+	$(PYTHON_INTERPRETER) src/data/get_raw_data.py
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
