@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import pandas as pd 
-from src.data.cleaning import make_interim_data, prepare
+from src.data.cleaning import process_data
 
 
 @click.command()
@@ -21,10 +21,10 @@ def main(input_filepath, output_filepath):
     drugs_raw = pd.read_csv('{0}/drugs.csv'.format(input_filepath), usecols=['warnings', 'openfda.product_type'])
 
     logger.info('processing raw data')
-    drugs_interim = make_interim_data(drugs_raw)
+    drugs_processed = process_data(drugs_raw)
 
-    logger.info('writing interim data')
-    drugs_interim.to_csv('data/interim/drugs.csv', index=False)
+    logger.info('writing processed data')
+    drugs_interim.to_csv('{0}/drugs.csv'.format(output_filepath), index=False)
 
     logger.info('done')
 
