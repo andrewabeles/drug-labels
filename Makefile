@@ -1,4 +1,4 @@
-.PHONY: test_environment setup_project requirements data
+.PHONY: test_environment requirements data
 
 #################################################################################
 # GLOBALS                                                                       #
