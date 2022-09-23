@@ -15,10 +15,6 @@ PYTHON_INTERPRETER = python3
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
 
-## Setup Project
-setup_project: test_environment
-	pip install . 
-
 ## Install Python Dependencies
 requirements: setup_project
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
