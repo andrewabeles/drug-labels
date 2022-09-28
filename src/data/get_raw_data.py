@@ -23,7 +23,7 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info('downloading raw data')
     
-    url = 'https://api.fda.gov/drug/label.json?search=_exists_:warnings+AND+_exists_:openfda.product_type&limit=1000'
+    url = 'https://api.fda.gov/drug/label.json?search=_exists_:openfda.route&limit=1000'
     drugs = get_all_drugs(url) # get list of drugs 
     df = pd.json_normalize(drugs) # store them in a pandas dataframe 
 
