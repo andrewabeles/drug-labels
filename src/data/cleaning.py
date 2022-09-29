@@ -11,7 +11,7 @@ def process_data(drugs_raw):
     drugs_processed['text'] = drugs_processed['dosage_and_administration'].apply(lambda x: ' '.join(eval(x))) # transform column from list of strings to single string
     drugs_processed = drugs_processed.query("text != ''").reset_index(drop=True) # remove rows with blank text 
     drugs_processed['tokens'] = drugs_processed['text'].apply(prepare) # apply text processing 
-    return drugs_processed[['target', 'text', 'tokens']]
+    return drugs_processed[['target', 'text', 'tokens']].reset_index()
 
 def remove_punctuation(text):
     punct_set = set(punctuation)
