@@ -1,4 +1,5 @@
 from string import punctuation
+import re
 
 def process_data(drugs_raw):
     """Process the raw drugs data.
@@ -15,10 +16,14 @@ def process_data(drugs_raw):
 
 def remove_punctuation(text):
     punct_set = set(punctuation)
+    punct_set.remove('/') # keep '/' to use for tokenization
     return "".join([char for char in text if char not in punct_set])
 
 def tokenize(text):
-    return text.split()
+    pattern = re.compile(r'[\s/]') # split on whitespace and '/'
+    tokens = re.split(pattern, text)
+    tokens = [t for t in tokens if t != ''] # remove blank tokens that used to be '/'
+    return tokens
 
 def remove_stopwords(tokens):
     """ToDo"""
