@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import pandas as pd 
-from src.data.cleaning import process_data
+from cleaning import process_data
 
 
 @click.command()

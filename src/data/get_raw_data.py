@@ -28,7 +28,7 @@ def main():
     df = pd.json_normalize(drugs) # store them in a pandas dataframe 
 
     logger.info('writing raw data')
-    df.to_csv('data/raw/drugs.csv', index=False) # save the dataframe as a csv to the data/raw directory
+    df.to_csv('../data/raw/drugs.csv', index=False) # save the dataframe as a csv to the data/raw directory
 
     logger.info('done')
 
