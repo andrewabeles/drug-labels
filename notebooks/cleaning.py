@@ -1,0 +1,36 @@
+from string import punctuation
+import re
+
+def process_data(drugs_raw):
+    """Process the raw drugs data.
+    
+    Takes the raw drugs dataframe as input and performs some basic column reformatting and text processing like tokenization.
+    """
+    drugs_processed = drugs_raw.copy()
+    drugs_processed['target'] = drugs_processed['openfda.route'].apply(lambda x: eval(x)[0]) # transform column from list to single string
+    drugs_processed.dropna(subset=['dosage_and_administration'], inplace=True) # drop rows missing the text field 
+    drugs_processed['text'] = drugs_processed['dosage_and_administration'].apply(lambda x: ' '.join(eval(x))) # transform column from list of strings to single string
+    drugs_processed = drugs_processed.query("text != ''").reset_index(drop=True) # remove rows with blank text 
+    drugs_processed['tokens'] = drugs_processed['text'].apply(prepare) # apply text processing 
+    return drugs_processed[['target', 'text', 'tokens']].reset_index()
+
+def remove_punctuation(text):
+    punct_set = set(punctuation)
+    punct_set.remove('/') # keep '/' to use for tokenization
+    return "".join([char for char in text if char not in punct_set])
+
+def tokenize(text):
+    pattern = re.compile(r'[\s/]') # split on whitespace and '/'
+    tokens = re.split(pattern, text)
+    tokens = [t for t in tokens if t != ''] # remove blank tokens that used to be '/'
+    return tokens
+
+def remove_stopwords(tokens):
+    """ToDo"""
+    return tokens
+
+def prepare(text, pipeline=[str.lower, remove_punctuation, tokenize, remove_stopwords]):
+    """Pass a string through a text processing pipeline."""
+    for transform in pipeline:
+        text = transform(text)
+    return text
