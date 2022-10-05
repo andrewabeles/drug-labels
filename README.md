@@ -1,20 +1,11 @@
 drug-labels
 ==============================
 
-Text mining drug labels.
-
-Getting Started
-------------
-
-1. Download Make. Windows: http://gnuwin32.sourceforge.net/packages/make.htm MacOS: http://developer.apple.com/
-2. Create a python3 virtual environment for this project and activate it. 
-3. In your terminal run `make data`, which will install dependencies, download the raw data, and process it. Downloading the data may take a few minutes.  
+The objective of this project is to build two NLP models and showcase them using a simple web app. The first model classifies a drug’s route of administration (oral, topical, etc.) based on its label’s dosage and administration text. The second model is unsupervised and extracts topics from the dosage and administration text. These two models will then be compared. The <a target="_blank" href="https://open.fda.gov/apis/drug/label/">OpenFDA API</a> is the project's data source.
 
 Project Organization
 ------------
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
     │   ├── external       <- Data from third party sources.
@@ -22,41 +13,16 @@ Project Organization
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering)
+    │                         and a short `-` delimited description, e.g.
+    │                         `1.0-initial-data-exploration`.
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
     │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
 
 --------
