@@ -38,7 +38,7 @@ def tokenize(text):
 def remove_stopwords(tokens):
     return [t for t in tokens if t not in stopwords_set]
 
-def prepare(text, pipeline=[str.lower, remove_punctuation, tokenize, remove_stopwords]):
+def prepare(text, pipeline=[str.lower, remove_punctuation, remove_numbers, tokenize, remove_stopwords]):
     """Pass a string through a text processing pipeline."""
     for transform in pipeline:
         text = transform(text)
