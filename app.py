@@ -1,6 +1,6 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State
 
-app = Dash(__name__)
+app = Dash(__name__, suppress_callback_exceptions=True)
 server = app.server
 
 app.layout = html.Div([
@@ -25,14 +25,23 @@ def render_content(selected_tab):
                 value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.',
                 style={'width': '100%', 'height': 300}
             ),
-            html.Button('Classify', id='classify-button'),
+            html.Button('Classify', id='classify-button', n_clicks=0),
             html.H3('Predicted Route of Administration'),
-            html.P('ORAL')
+            html.P(id='prediction')
         ])
     elif selected_tab == 'topic-model-tab':
         return html.Div([
             html.H3('Topic Model')
         ])
+
+@app.callback(
+    Output('prediction', 'children'),
+    Input('classify-button', 'n_clicks'),
+    State('input-text', 'value')
+)
+def classify_text(n_clicks, text):
+    if n_clicks > 0: 
+        return "The classifier's prediction will be shown here."
 
 if __name__ == '__main__':
     app.run_server(debug=True)
