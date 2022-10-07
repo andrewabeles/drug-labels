@@ -19,7 +19,15 @@ app.layout = html.Div([
 def render_content(selected_tab):
     if selected_tab == 'classifier-tab':
         return html.Div([
-            html.H3('Classifier')
+            html.H3('Dosage and Administration Text'),
+            dcc.Textarea(
+                id='input-text',
+                value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.',
+                style={'width': '100%', 'height': 300}
+            ),
+            html.Button('Classify', id='classify-button'),
+            html.H3('Predicted Route of Administration'),
+            html.P('ORAL')
         ])
     elif selected_tab == 'topic-model-tab':
         return html.Div([
