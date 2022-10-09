@@ -1,5 +1,7 @@
 from dash import Dash, dcc, html, Input, Output, State
 import pickle
+import pandas as pd 
+import plotly.express as px
 from notebooks.cleaning import prepare, get_document_features
 
 ### GLOBAL VARIABLES ###
@@ -38,11 +40,11 @@ def render_content(selected_tab):
             dcc.Textarea(
                 id='input-text',
                 value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.',
-                style={'width': '100%', 'height': 300}
+                style={'width': '100%', 'height': 200}
             ),
             html.Button('Classify', id='classify-button', n_clicks=0),
             html.H3('Predicted Route of Administration'),
-            html.P(id='prediction')
+            html.Div(id='pdist')
         ])
     elif selected_tab == 'topic-model-tab':
         return html.Div([
@@ -50,7 +52,7 @@ def render_content(selected_tab):
         ])
 
 @app.callback(
-    Output('prediction', 'children'),
+    Output('pdist', 'children'),
     Input('classify-button', 'n_clicks'),
     State('input-text', 'value')
 )
@@ -59,7 +61,14 @@ def classify_text(n_clicks, text):
         tokens = prepare(text)
         features = get_document_features(tokens, classifier_features)
         prediction = classifier.classify(features)
-        return prediction
+        pdist = classifier.prob_classify(features)
+        pdist_df = pd.DataFrame({
+            'route': classifier.labels(),
+            'probability': [pdist.prob(route) for route in classifier.labels()]
+        }).sort_values(by='probability')
+        fig = px.bar(pdist_df, y='route', x='probability')
+        print(pdist)
+        return [dcc.Graph(figure=fig)]
 
 ### RUN APP ###
 
