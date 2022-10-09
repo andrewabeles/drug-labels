@@ -71,7 +71,6 @@ def classify_text(n_clicks, text):
             'probability': [pdist.prob(route) for route in classifier.labels()]
         }).sort_values(by='probability')
         fig = px.bar(pdist_df, y='route', x='probability')
-        print(pdist)
         return [dcc.Graph(figure=fig)]
 
 ### RUN APP ###
