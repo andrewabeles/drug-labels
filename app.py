@@ -1,7 +1,16 @@
 from dash import Dash, dcc, html, Input, Output, State
+import pickle
+
+### GLOBAL VARIABLES ###
 
 app = Dash(__name__, suppress_callback_exceptions=True)
 server = app.server
+
+# Load trained classifier 
+with open('models/classifier.pkl', 'rb') as f: 
+    classifer = pickle.load(f)
+
+### APP LAYOUT ###
 
 app.layout = html.Div([
     html.H1('Text Mining Drug Labels'),
@@ -11,6 +20,8 @@ app.layout = html.Div([
     ]),
     html.Div(id='tab-content')
 ])
+
+### APP CALLBACKS ###
 
 @app.callback(
     Output('tab-content', 'children'),
@@ -42,6 +53,8 @@ def render_content(selected_tab):
 def classify_text(n_clicks, text):
     if n_clicks > 0: 
         return "The classifier's prediction will be shown here."
+
+### RUN APP ###
 
 if __name__ == '__main__':
     app.run_server(debug=True)
