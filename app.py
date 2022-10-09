@@ -35,16 +35,20 @@ app.layout = html.Div([
 )
 def render_content(selected_tab):
     if selected_tab == 'classifier-tab':
-        return html.Div([
-            html.H3('Dosage and Administration Text'),
-            dcc.Textarea(
-                id='input-text',
-                value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.',
-                style={'width': '100%', 'height': 200}
-            ),
-            html.Button('Classify', id='classify-button', n_clicks=0),
-            html.H3('Predicted Route of Administration'),
-            html.Div(id='pdist')
+        return html.Div(style={'display': 'flex'}, children=[
+            html.Div(style={'width': '49%', 'display': 'inline-block'}, children=[
+                html.H3('Dosage and Administration Text'),
+                dcc.Textarea(
+                    id='input-text',
+                    style={'width': '99%', 'height': 370},
+                    value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.'
+                ),
+                html.Button('Classify', id='classify-button', n_clicks=0)
+            ]),
+            html.Div(style={'width': '49%', 'display': 'inline-block'}, children=[
+                html.H3('Predicted Route of Administration'),
+                html.Div(id='pdist')
+            ])
         ])
     elif selected_tab == 'topic-model-tab':
         return html.Div([
