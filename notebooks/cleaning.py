@@ -43,3 +43,6 @@ def prepare(text, pipeline=[str.lower, remove_punctuation, remove_numbers, token
     for transform in pipeline:
         text = transform(text)
     return text
+
+def get_document_features(tokens, featureset):
+    return {t: t in featureset for t in tokens}

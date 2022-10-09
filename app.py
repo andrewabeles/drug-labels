@@ -1,5 +1,6 @@
 from dash import Dash, dcc, html, Input, Output, State
 import pickle
+from notebooks.cleaning import prepare, get_document_features
 
 ### GLOBAL VARIABLES ###
 
@@ -8,7 +9,10 @@ server = app.server
 
 # Load trained classifier 
 with open('models/classifier.pkl', 'rb') as f: 
-    classifer = pickle.load(f)
+    classifier = pickle.load(f)
+# Load classifier featureset 
+with open('models/classifier_features.pkl', 'rb') as f:
+    classifier_features = pickle.load(f)
 
 ### APP LAYOUT ###
 
@@ -52,7 +56,10 @@ def render_content(selected_tab):
 )
 def classify_text(n_clicks, text):
     if n_clicks > 0: 
-        return "The classifier's prediction will be shown here."
+        tokens = prepare(text)
+        features = get_document_features(tokens, classifier_features)
+        prediction = classifier.classify(features)
+        return prediction
 
 ### RUN APP ###
 
