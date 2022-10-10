@@ -40,7 +40,7 @@ def render_content(selected_tab):
                 html.H3('Dosage and Administration Text'),
                 dcc.Textarea(
                     id='input-text',
-                    style={'width': '99%', 'height': 370},
+                    style={'width': '99%', 'height': 370, 'resize': 'none'},
                     value='DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food.'
                 ),
                 html.Button('Classify', id='classify-button', n_clicks=0)
