@@ -52,7 +52,14 @@ def render_content(selected_tab):
         ])
     elif selected_tab == 'topic-model-tab':
         return html.Div([
-            html.H3('Topic Model')
+            html.Iframe(
+                src=app.get_asset_url('lda_display.html'),
+                style={
+                    'position': 'absolute',
+                    'width': '100%',
+                    'height': '100%'
+                }
+            )
         ])
 
 @app.callback(
