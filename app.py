@@ -2,7 +2,7 @@ from dash import Dash, dcc, html, Input, Output, State
 import pickle
 import pandas as pd 
 import plotly.express as px
-from notebooks.cleaning import prepare, get_document_features
+from cleaning import prepare, get_document_features
 
 app = Dash(__name__, suppress_callback_exceptions=True)
 server = app.server
