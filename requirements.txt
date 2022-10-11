@@ -1,6 +1,4 @@
-jupyterlab
-pandas 
-matplotlib
-seaborn 
 nltk
-sentence-transformers
+pandas 
+dash
+gunicorn
