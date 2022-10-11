@@ -1,11 +1,4 @@
-jupyterlab
-pandas 
-matplotlib
-seaborn 
 nltk
-sentence-transformers
+pandas 
 dash
-pyLDAvis
-wordcloud
-scikit-learn
 gunicorn
