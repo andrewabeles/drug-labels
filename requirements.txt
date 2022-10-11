@@ -8,3 +8,4 @@ dash
 pyLDAvis
 wordcloud
 scikit-learn
+gunicorn
