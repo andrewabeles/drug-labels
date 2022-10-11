@@ -5,3 +5,6 @@ seaborn
 nltk
 sentence-transformers
 dash
+pyLDAvis
+wordcloud
+scikit-learn
