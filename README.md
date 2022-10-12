@@ -1,7 +1,9 @@
-drug-labels
+Text Mining Drug Labels
 ==============================
 
-The objective of this project is to build two NLP models and showcase them using a simple web app. The first model classifies a drug’s route of administration (oral, topical, etc.) based on its label’s dosage and administration text. The second model is unsupervised and extracts topics from the dosage and administration text. The two models are then compared. The <a target="_blank" href="https://open.fda.gov/apis/drug/label/">OpenFDA API</a> is the project's data source.
+The objective of this project is to build two NLP models and showcase them using a simple web app. The first model classifies a drug’s route of administration (oral, topical, etc.) based on its label’s dosage and administration text. The second model is unsupervised and extracts topics from the dosage and administration text. The two models are then compared. This project uses the <a target="_blank" href="https://open.fda.gov/apis/drug/label/">OpenFDA API</a> as its data source. 
+
+You can view the deployed web app <a target="_blank" href="https://drug-labels.herokuapp.com/">here.</a>
 
 Project Organization
 ------------
