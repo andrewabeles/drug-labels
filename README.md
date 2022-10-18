@@ -5,19 +5,6 @@ The objective of this project is to build two NLP models and showcase them using
 
 You can view the deployed web app <a target="_blank" href="https://drug-labels.herokuapp.com/">here.</a>
 
-References
-------------
-
-Some of this project's code was borrowed from the following sources:
-
-Albrecht, J., Ramachandran, S., & Winkler, C. (2020). _Blueprints for text analytics using Python_. O'Reilly. 
-
-Chandler, J. _ADS 509: topic modeling_ [Computer software]. GitHub. https://github.com/37chandler/ads-tm-topic-modeling 
-
-Chandler, J. _Naive bayes assignment_ [Computer software]. GitHub. https://github.com/37chandler/tm-nb-conventions 
-
-Chandler, J. _Tokenization, normalization, and descriptive statistics_ [Computer software]. GitHub. https://github.com/37chandler/ads-tm-token-norm 
-
 Project Organization
 ------------
 
@@ -52,3 +39,16 @@ Project Organization
 --------
 
 <p><small>Project organization based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+References
+------------
+
+Some of this project's code was borrowed from the following sources:
+
+Albrecht, J., Ramachandran, S., & Winkler, C. (2020). _Blueprints for text analytics using Python_. O'Reilly. 
+
+Chandler, J. _ADS 509: topic modeling_ [Computer software]. GitHub. https://github.com/37chandler/ads-tm-topic-modeling 
+
+Chandler, J. _Naive bayes assignment_ [Computer software]. GitHub. https://github.com/37chandler/tm-nb-conventions 
+
+Chandler, J. _Tokenization, normalization, and descriptive statistics_ [Computer software]. GitHub. https://github.com/37chandler/ads-tm-token-norm 
