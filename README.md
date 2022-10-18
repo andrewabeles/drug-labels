@@ -9,24 +9,33 @@ Project Organization
 ------------
 
     ├── README.md          <- The top-level README for developers using this project.
+    |
     ├── data
     │   ├── external       <- Data from third party sources.
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering)
     │                         and a short `-` delimited description, e.g.
-    │                         `1.0-initial-data-exploration`.
+    │                         `1.0-get-raw-data.ipynb`.
+    |
+    ├── cleaning.py        <- Module of helper functions for data cleaning. 
+    |
+    ├── models             <- Trained and serialized models.
+    |
+    ├── app.py             <- Dash application
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-
+    ├── assets             <- Static assets for the dash app. 
+    |
+    ├── requirements.txt   <- The requirements file for Heroku deployment. 
+    |
+    ├── nltk.txt           <- nltk corpus requirements for Heroku deployment. 
+    |
+    ├── Procfile           <- Commands for Heroku deployment. 
+    |
+    ├── .slugignore        <- Files for Heroku to ignore.      
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+<p><small>Project organization based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
