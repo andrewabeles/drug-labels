@@ -1,4 +1,4 @@
 nltk
 pandas 
-dash
-gunicorn
+streamlit 
+plotly
