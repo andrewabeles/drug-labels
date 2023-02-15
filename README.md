@@ -24,7 +24,7 @@ Project Organization
     |
     ├── models             <- Trained and serialized models.
     |
-    ├── app.py             <- Dash application
+    ├── app.py             <- Streamlit application
     │
     ├── assets             <- Static assets for the dash app. 
     |
